@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Food.Services;
+﻿using Food.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -21,8 +16,10 @@ namespace Food
         {
             // Singleton creates one service class to be used throughout the project
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+
             // Scoped creates a new service class for each request
-            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
+            // services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
 
             // Required to use MVC middleware
             services.AddMvc();

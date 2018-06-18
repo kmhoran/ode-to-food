@@ -1,4 +1,5 @@
 ﻿using Food.Models;
+using Food.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Food.Services
     {
         IEnumerable<Restaurant> Get();
         Restaurant Get(int id);
+        int Add(Restaurant restaurant);
     }
 }

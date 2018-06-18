@@ -43,12 +43,31 @@ namespace Food.Controllers
             return View(model);
         }
 
-
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(RestaurantEditModel editModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var newResto = new Restaurant()
+            {
+                RestaurantId = 0,
+                Name = editModel.Name,
+                Price = editModel.Price
+            };
+
+            int newId =_restoData.Add(newResto);
+
+            return RedirectToAction(nameof(Details), new { id=newId});
+        }
 
         public IActionResult RestaurantApi()
         {

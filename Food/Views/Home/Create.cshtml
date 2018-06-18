@@ -1,19 +1,30 @@
-﻿@using Food.Models
-@model Restaurant
+﻿@using Food.ViewModels
+@using Food.Models
+@model RestaurantEditModel
 @{
     ViewData["Title"] = "Create";
 }
 
 <h2>Create</h2>
-
 <form method="post">
 
-    <input asp-for="Name" />
-    <select asp-for="Price" 
-            asp-items="@Html.GetEnumSelectList<PriceType>()">
-    </select>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <select asp-for="Price"
+                asp-items="@Html.GetEnumSelectList<PriceType>()"></select>
+        <span asp-validation-for="Price"></span>
+    </div>
 
-    <input type="submit" 
-           name="save" 
+    <input type="submit"
+           name="save"
            value="save" />
 </form>
+
+
+<br />
+<a asp-action="Index">Home</a>
