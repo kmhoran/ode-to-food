@@ -1,0 +1,19 @@
+﻿@using Food.Models
+@model Restaurant
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post">
+
+    <input asp-for="Name" />
+    <select asp-for="Price" 
+            asp-items="@Html.GetEnumSelectList<PriceType>()">
+    </select>
+
+    <input type="submit" 
+           name="save" 
+           value="save" />
+</form>

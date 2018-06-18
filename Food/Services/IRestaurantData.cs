@@ -9,5 +9,6 @@ namespace Food.Services
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> Get();
+        Restaurant Get(int id);
     }
 }

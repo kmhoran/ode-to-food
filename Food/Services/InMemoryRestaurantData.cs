@@ -15,15 +15,20 @@ namespace Food.Services
         {
             _restos = new List<Restaurant>()
             {
-                new Restaurant{ RestaurantId=1, Name="Resto 1"},
-                new Restaurant{ RestaurantId=2, Name="Resto 2" },
-                new Restaurant{ RestaurantId=3, Name="Resto 3" }
+                new Restaurant{ RestaurantId=1, Name="Chez Mon Vieux", Price=PriceType.Affordable},
+                new Restaurant{ RestaurantId=2, Name="Le Président", Price=PriceType.Expensive },
+                new Restaurant{ RestaurantId=3, Name="Au Bureau", Price=PriceType.Cheap }
             };
         }
 
         public IEnumerable<Restaurant> Get()
         {
             return _restos.OrderBy(r => r.Name);
+        }
+
+        public Restaurant Get(int id)
+        {
+            return _restos.SingleOrDefault(r => r.RestaurantId == id);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Food.Services
 
         public string GetMessage()
         {
-            return String.Concat("Interface says 'NotFound' and ", _config["Greeting"]);
+            return String.Concat("Interface says Hi and ", _config["Greeting"]);
         }
     }
 }

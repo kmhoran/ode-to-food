@@ -59,7 +59,7 @@ namespace Food
             {
                 string greeting = greeter.GetMessage();
                 context.Response.ContentType = "text/plain";
-                await context.Response.WriteAsync($"{greeting} : {env.EnvironmentName}");
+                await context.Response.WriteAsync("Not Found");
             });
         }
 
