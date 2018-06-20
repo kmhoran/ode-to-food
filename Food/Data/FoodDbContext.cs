@@ -9,6 +9,10 @@ namespace Food.Data
 {
     public class FoodDbContext: DbContext
     {
+        // Createing and migrating DB is done with two Commands:
+        // $ dotnet ef migrations add initaialCreate -v
+        // $ dotnet ef database update -v
+
         public FoodDbContext(DbContextOptions options)
             : base(options)
         {
