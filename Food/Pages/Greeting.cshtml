@@ -1,0 +1,15 @@
+﻿@page
+@model Food.Pages.GreetingModel
+@{
+    ViewData["Title"] = "Greeting";
+}
+
+
+@* We can make use of the services registered in Startup.cs (like IGreeter service) through an @inject statement *@
+@inject IGreeter _greeter
+
+<h2>Greeting</h2>
+<p>@_greeter.GetMessage()</p>
+
+
+

@@ -1,8 +1,12 @@
 ﻿@model Food.Models.Restaurant
 
+@{
+    ViewData["Title"] = "Detail";
+}
+
 <h3>@Model.RestaurantId @Model.Name</h3>
 <p>$: @Model.Price</p>
 <p>Details to come...</p>
-<br/>
+<br />
 <a asp-action="Index">Home</a>
 
