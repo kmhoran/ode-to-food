@@ -3,13 +3,16 @@
     ViewData["Title"] = "Food App";
 }
 <h3>All Restaurants</h3>
+
+@* Partial Views are dependent views almost like html components *@
 @foreach (var resto in Model.Restaurants)
 {
-    <a asp-action="Details" ,
-       asp-route-id="@resto.RestaurantId"><h4>@resto.RestaurantId @resto.Name</h4></a>
+    @Html.Partial("_Summary", resto);
 }
-<br />
-<a asp-action="Create">Add Restaurant</a>
+
+<div>
+    <a asp-action="Create">Add Restaurant</a>
+</div>
 
 @section footer {
     @Model.CurrentMessage

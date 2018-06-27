@@ -6,7 +6,10 @@
 
 <h3>@Model.RestaurantId @Model.Name</h3>
 <p>$: @Model.Price</p>
+<a asp-page="/Restaurants/Edit" asp-route-id="@Model.RestaurantId">Edit</a>
+
 <p>Details to come...</p>
+
 <br />
 <a asp-action="Index">Home</a>
 

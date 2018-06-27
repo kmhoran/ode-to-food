@@ -12,5 +12,6 @@ namespace Food.Services
         IEnumerable<Restaurant> Get();
         Restaurant Get(int id);
         int Add(Restaurant restaurant);
+        Restaurant Update(Restaurant restaurant);
     }
 }

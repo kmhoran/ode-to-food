@@ -43,5 +43,10 @@ namespace Food.Services
         {
             return _restos.SingleOrDefault(r => r.RestaurantId == id);
         }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

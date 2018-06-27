@@ -1,0 +1,14 @@
+﻿@model Food.Models.Restaurant
+
+@* This is a Partial View which can be resused throughout Views in the Home controller
+   Partial Views will always require some information from their parent View *@
+
+<section>
+    <h3>@Model.Name</h3>
+    <div>$: @Model.Price</div>
+    <div>
+        <a asp-action="Details" ,
+           asp-route-id="@Model.RestaurantId"><h4>Info</h4></a>
+    </div>
+</section>
+<br />

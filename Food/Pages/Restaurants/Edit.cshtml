@@ -1,0 +1,27 @@
+﻿@page "{id}"
+@model Food.Pages.Restaurants.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit @Model.Restaurant.Name</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Restaurant.RestaurantId" />
+    <div>
+        <label asp-for="Restaurant.Name"></label>
+        <input asp-for="Restaurant.Name" />
+        <span asp-validation-for="Restaurant.Name"></span>
+    </div>
+    <div>
+        <label asp-for="Restaurant.Price"></label>
+        <select asp-for="Restaurant.Price"
+                asp-items="@Html.GetEnumSelectList<PriceType>()"></select>
+        <span asp-validation-for="Restaurant.Price"></span>
+    </div>
+
+    <input type="submit"
+           name="save"
+           value="save" />
+</form>

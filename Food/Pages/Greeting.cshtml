@@ -1,4 +1,12 @@
-﻿@page
+﻿@page "{name}"
+@* ***********************************************************
+    we can require parameter values to be passed to this page:
+
+    [required parameter]: @page "{name}" => https://mydomain/page/SomeName
+    [optional parameter] @page "{name?}" => https://mydomain/page
+
+
+*@
 @model Food.Pages.GreetingModel
 @{
     ViewData["Title"] = "Greeting";
@@ -6,11 +14,13 @@
 
 
 @* We can make use of the services registered in Startup.cs (like IGreeter service) through an @inject statement *@
-@inject IGreeter _greeter
+@*@inject IGreeter _greeter*@
+@* Howver, since this can place a little too much power in the Razor page, it is better to use the Razor Model Provided (GreetingModel) *@
 
 <h2>Greeting</h2>
-<p>@_greeter.GetMessage()</p>
+<p>@Model.CurrentGreeting</p>
 <p>@DateTime.Now.ToShortDateString()</p>
+<p><strong>@Model.Name</strong></p>
 
 
 

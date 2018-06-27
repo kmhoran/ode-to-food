@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Food.Data;
 using Food.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Food.Services
 {
@@ -30,6 +31,13 @@ namespace Food.Services
         public Restaurant Get(int id)
         {
             return _dbContext.Restaurants.FirstOrDefault(r => r.RestaurantId == id);
+        }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            _dbContext.Attach(restaurant).State = EntityState.Modified;
+            _dbContext.SaveChanges();
+            return restaurant;
         }
     }
 }
