@@ -1,3 +1,4 @@
+
 ﻿# Razor Pages
 
 Razor pages are a slimed down feature .net core provides for rendering HTML. It does not require the overhead of the MVC.
