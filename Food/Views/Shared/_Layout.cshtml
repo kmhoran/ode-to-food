@@ -17,6 +17,10 @@
     </div>
     <footer>
         @RenderSection("footer", required: false)
+        @*@await Component.InvokeAsync("Greeter")*@
+
+        @* this syntax is made possible with the component Tag Helper in the _ViewImports file *@
+        <vc:greeter></vc:greeter>
     </footer>
 </body>
 </html>
