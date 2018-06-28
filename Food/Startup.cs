@@ -3,6 +3,8 @@ using Food.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -14,12 +16,14 @@ namespace Food
     public class Startup
     {
         private IConfiguration _config;
+        private IHostingEnvironment env;
 
         //- Because we cannot inject our configuration details into the 
         //- ConfigureServices method, we must initialize them in the constructor
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment _env)
         {
             _config = configuration;
+            env = _env; 
         }
 
 
@@ -31,6 +35,13 @@ namespace Food
             //- Singleton creates one service class to be used throughout the project
             services.AddSingleton<IGreeter, Greeter>();
             // services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+
+
+            if (!env.IsDevelopment())
+            {
+                services.Configure<MvcOptions>(o => o.Filters.Add(new RequireHttpsAttribute()));
+            }
+
 
 
             //- Scoped creates a new service class for each request
@@ -56,6 +67,10 @@ namespace Food
                 app.UseDeveloperExceptionPage();
             }
 
+
+            // Switch incoming requests to SSL
+            //app.UseRewriter(new RewriteOptions().AddRedirectToHttpsPermanent());
+           
             app.UseWelcomePage(new WelcomePageOptions
             {
                 Path="/welcome"
